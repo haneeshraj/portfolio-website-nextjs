@@ -1,0 +1,36 @@
+.navbar {
+  position: fixed; // Fixed positioning
+  top: 0;
+  left: 0;
+  right: 0;
+
+  max-width: 192rem;
+  width: 100%;
+  background-color: rgba(20, 20, 20, 0.075);
+  height: 6.4rem;
+  padding: 0 4rem;
+  z-index: 10000;
+  backdrop-filter: blur(1rem);
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 auto; /* Center the navbar */
+
+  &__menu {
+    display: flex;
+    gap: 4rem;
+  }
+
+  &__item {
+    overflow: hidden;
+    font-size: 1.6rem;
+    text-decoration: none;
+    color: white;
+    font-weight: 400;
+  }
+
+  &__item-letter {
+    display: inline-block;
+  }
+}

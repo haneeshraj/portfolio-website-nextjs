@@ -1,15 +1,17 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
+import Container from "@/components/Container/Container";
 
-const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
+const clashDisplay = localFont({
+  src: "./fonts/ClashDisplay-Variable.woff",
+  variable: "--font-clash-display",
   weight: "100 900",
 });
-const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
+
+const clashDisplay2 = localFont({
+  src: "./fonts/ClashDisplay-Variable.woff2",
+  variable: "--font-clash-display",
   weight: "100 900",
 });
 
@@ -25,8 +27,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        {children}
+      <body className={`${clashDisplay.className} ${clashDisplay2.className}`}>
+        <Container>{children}</Container>
       </body>
     </html>
   );

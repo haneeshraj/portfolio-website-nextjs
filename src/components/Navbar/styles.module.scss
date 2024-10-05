@@ -1,36 +1,51 @@
 .navbar {
-  position: fixed; // Fixed positioning
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 7.2rem;
+
+  position: fixed;
   top: 0;
   left: 0;
   right: 0;
+  z-index: 1000;
+  margin: 0 auto;
 
   max-width: 192rem;
   width: 100%;
-  background-color: rgba(20, 20, 20, 0.075);
-  height: 6.4rem;
-  padding: 0 4rem;
-  z-index: 10000;
-  backdrop-filter: blur(1rem);
 
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin: 0 auto; /* Center the navbar */
+  padding: 0 2.4rem;
 
-  &__menu {
+  &__logo {
+  }
+
+  &__list {
     display: flex;
-    gap: 4rem;
+    gap: 2.4rem;
+
+    font-size: 2rem;
   }
 
   &__item {
-    overflow: hidden;
-    font-size: 1.6rem;
-    text-decoration: none;
-    color: white;
-    font-weight: 400;
+    position: relative;
   }
 
-  &__item-letter {
-    display: inline-block;
+  &__dropdown {
+    position: absolute;
+    top: calc(100% + 2rem);
+    left: 50%;
+    transform: translateX(-50%);
+
+    padding: 1.6rem 3.2rem;
+
+    &--open {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.6rem;
+    }
+  }
+
+  &__dropdown-name {
+    width: max-content;
   }
 }

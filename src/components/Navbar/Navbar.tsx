@@ -1,114 +1,90 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { motion, useAnimation } from "framer-motion";
-import Link from "next/link";
-
-import Logo from "../Logo/Logo";
-import styles from "./styles.module.scss";
+import { AnimatePresence, motion } from "framer-motion";
 import { NavItem, navItems } from "@/utils/navItems";
 
+import styles from "./styles.module.scss";
+import Logo from "../Logo/Logo";
+import { useState } from "react";
+import clsx from "clsx";
+import Link from "next/link";
+
 const Navbar = () => {
-  const [scrolledDown, setScrolledDown] = useState(false);
-  const navControls = useAnimation();
-  const logoControls = useAnimation();
-
-  useEffect(() => {
-    let lastScrollY = window.scrollY;
-
-    navControls.start({
-      y: "0%",
-      transition: { duration: 0.6, ease: [0.24, 0, 0, 1] },
-    });
-
-    const handleScroll = () => {
-      const currentScrollY = window.scrollY;
-
-      // Check if scrolled down
-      if (currentScrollY > lastScrollY) {
-        setScrolledDown(true);
-      } else {
-        setScrolledDown(false);
-      }
-
-      lastScrollY = currentScrollY;
-    };
-
-    window.addEventListener("scroll", handleScroll);
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, [navControls]);
-
-  useEffect(() => {
-    if (scrolledDown) {
-      navControls.start({
-        y: "-100%",
-        transition: { duration: 0.6, ease: [0.24, 0, 0, 1] },
-      });
-    } else {
-      navControls.start({
-        y: "0%",
-        transition: { duration: 0.6, ease: [0.24, 0, 0, 1] },
-      });
-    }
-  }, [scrolledDown, navControls, logoControls]);
+  const [dropDownOpen, setDropDownOpen] = useState(false);
 
   return (
-    <motion.div
-      className={styles["navbar"]}
-      initial={{ y: "-100%" }}
-      animate={navControls}
-    >
-      <Link href="/">
-        <motion.div
-          className={styles["navbar__logo"]}
-          initial={{ scale: 0 }}
-          animate={{
-            scale: 1,
-            transition: {
-              duration: 1,
-              ease: [0.3, 0, 0, 1],
-              delay: 0.3,
-            },
-          }}
-        >
-          <Logo.hr height={36} width={36} />
-        </motion.div>
-      </Link>
-      <div className={styles["navbar__menu"]}>
-        {navItems.map((item: NavItem, wordIndex: number) => {
-          const letters = item.name.split("");
-
+    <div className={styles["navbar"]}>
+      <motion.div className={styles["navbar__logo"]}>
+        <Logo.hr />
+      </motion.div>
+      <motion.div className={styles["navbar__list"]}>
+        {navItems.map((item: NavItem, index: number) => {
           return (
-            <Link href={item.link} key={`navitem-${wordIndex}`}>
-              <div className={styles["navbar__item"]}>
-                {letters.map((letter: string, index: number) => {
-                  return (
-                    <motion.span
-                      key={`navitem-${index}`}
-                      className={styles["navbar__item-letter"]}
-                      initial={{ y: "100%" }}
-                      animate={{
-                        y: "0%",
-                        transition: {
-                          duration: 0.6,
-                          ease: [0.24, 0, 0, 1],
-                          delay: wordIndex * 0.7 + 0.1 * index,
-                        },
-                      }}
-                    >
-                      {letter}
-                    </motion.span>
-                  );
-                })}
-              </div>
-            </Link>
+            <motion.div key={index} className={styles["navbar__item"]}>
+              <Link
+                href={item.link}
+                style={{ display: "inline-block" }}
+                className={styles["navbar__item-name"]}
+              >
+                <span
+                  onMouseEnter={
+                    item.dropdown ? () => setDropDownOpen(true) : undefined
+                  }
+                  onMouseLeave={
+                    item.dropdown ? () => setDropDownOpen(false) : undefined
+                  }
+                >
+                  {item.name}
+                </span>
+              </Link>
+              <AnimatePresence>
+                {dropDownOpen && item.dropdown && (
+                  <motion.div
+                    initial={{ opacity: 0, marginTop: "-1rem", zIndex: 1001 }}
+                    animate={{
+                      opacity: 1,
+                      marginTop: "0rem",
+                      transition: { duration: 0.3, ease: [0.3, 0, 0, 1] },
+                    }}
+                    exit={{
+                      opacity: 0,
+                      marginTop: "-1rem",
+                      transition: { duration: 0.3, ease: [0.3, 0, 0, 1] },
+                    }}
+                    className={clsx(styles["navbar__dropdown"], {
+                      [styles["navbar__dropdown--open"]]: dropDownOpen,
+                    })}
+                    onMouseEnter={
+                      item.dropdown ? () => setDropDownOpen(true) : undefined
+                    }
+                    onMouseLeave={
+                      item.dropdown ? () => setDropDownOpen(false) : undefined
+                    }
+                  >
+                    {item.dropdown.map((subItem: NavItem, index: number) => {
+                      return (
+                        <motion.div
+                          key={index}
+                          className={styles["navbar__dropdown-item"]}
+                        >
+                          <Link
+                            href={subItem.link}
+                            style={{ display: "inline-block" }}
+                            className={styles["navbar__dropdown-name"]}
+                          >
+                            <span>{subItem.name}</span>
+                          </Link>
+                        </motion.div>
+                      );
+                    })}
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </motion.div>
           );
         })}
-      </div>
-    </motion.div>
+      </motion.div>
+    </div>
   );
 };
 

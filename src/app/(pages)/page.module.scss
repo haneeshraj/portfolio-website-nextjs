@@ -1,0 +1,43 @@
+.header {
+  width: 100%;
+  max-width: 102rem;
+  margin: 0 auto;
+  margin-block: 4rem;
+}
+
+.icons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 24rem;
+  max-width: 102rem;
+  margin: 0 auto;
+  padding: 1rem 2rem;
+
+  border: 2px solid var(--background-95);
+  border-radius: 2rem;
+}
+
+.title {
+  text-align: center;
+  margin-top: 6.4rem;
+  &__top-text {
+    font-size: 5.2rem;
+    color: var(--text-80);
+    text-transform: uppercase;
+  }
+
+  &__bottom-text {
+    font-size: 11.2rem;
+    text-transform: uppercase;
+  }
+}
+
+.subtext {
+  &__text {
+    text-align: center;
+    font-size: 1.6rem;
+    color: var(--text-70);
+    margin-top: 1.6rem;
+  }
+}

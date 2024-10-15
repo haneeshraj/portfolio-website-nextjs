@@ -41,7 +41,7 @@ const AnimateText: React.FC<AnimateTextProps> = ({
     exit: { y: "100%" },
   };
 
-  const isInView = useInView(ref);
+  const isInView = useInView(ref, {once: true});
 
   return type === "h1" ? (
     <motion.h1

@@ -34,7 +34,7 @@ const Navbar = () => {
   }, []);
 
   return (
-    <div
+    <motion.div
       className={clsx(
         styles["nav"],
         {
@@ -44,6 +44,8 @@ const Navbar = () => {
           [styles["nav--attach"]]: isScrolled,
         }
       )}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1, transition: { duration: 0.2, ease: "linear" } }}
     >
       <motion.div
         className={clsx(
@@ -96,7 +98,7 @@ const Navbar = () => {
           <ThemeSwitcher />
         </motion.div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

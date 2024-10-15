@@ -1,0 +1,141 @@
+@use "sass:color";
+
+$themes: (
+  light: (
+    text: #08050a,
+    background: #fbf8fc,
+    primary: #8951bd,
+    secondary: #bb98dc,
+    accent: #9d67d0,
+
+    // Use color.scale() instead of lighten() and darken()
+    text-95: color.mix(#08050a, white, 95%),
+    // Almost completely white
+    text-90: color.mix(#08050a, white, 90%),
+    text-80: color.mix(#08050a, white, 80%),
+    text-70: color.mix(#08050a, white, 70%),
+    text-60: color.mix(#08050a, white, 60%),
+    text-50: color.mix(#08050a, white, 50%),
+    // Original
+    text-40: color.mix(#08050a, white, 40%),
+    text-30: color.mix(#08050a, white, 30%),
+    text-20: color.mix(#08050a, white, 20%),
+    text-10: color.mix(#08050a, white, 10%),
+    // Darkest mixed
+    text-5: color.mix(#08050a, white, 5%),
+    background-95: color.mix(#fbf8fc, black, 95%),
+    background-90: color.mix(#fbf8fc, black, 90%),
+    background-80: color.mix(#fbf8fc, black, 80%),
+    background-70: color.mix(#fbf8fc, black, 70%),
+    background-60: color.mix(#fbf8fc, black, 60%),
+    background-50: color.mix(#fbf8fc, black, 50%),
+    background-40: color.mix(#fbf8fc, black, 40%),
+    background-30: color.mix(#fbf8fc, black, 30%),
+    background-20: color.mix(#fbf8fc, black, 20%),
+    background-10: color.mix(#fbf8fc, black, 10%),
+    background-5: color.mix(#fbf8fc, black, 5%),
+  ),
+  dark: (
+    text: #f7f4fa,
+    background: #060307,
+    primary: #7a42ae,
+    secondary: #462367,
+    accent: #652f98,
+
+    text-95: color.mix(#f7f4fa, black, 95%),
+    // Almost completely black
+    text-90: color.mix(#f7f4fa, black, 90%),
+    text-80: color.mix(#f7f4fa, black, 80%),
+    text-70: color.mix(#f7f4fa, black, 70%),
+    text-60: color.mix(#f7f4fa, black, 60%),
+    text-50: color.mix(#f7f4fa, black, 50%),
+    // Original
+    text-40: color.mix(#f7f4fa, black, 40%),
+    text-30: color.mix(#f7f4fa, black, 30%),
+    text-20: color.mix(#f7f4fa, black, 20%),
+    text-10: color.mix(#f7f4fa, black, 10%),
+    // Darkest mixed
+    text-5: color.mix(#f7f4fa, black, 5%),
+    background-95: color.mix(#060307, white, 95%),
+    background-90: color.mix(#060307, white, 90%),
+    background-80: color.mix(#060307, white, 80%),
+    background-70: color.mix(#060307, white, 70%),
+    background-60: color.mix(#060307, white, 60%),
+    background-50: color.mix(#060307, white, 50%),
+    background-40: color.mix(#060307, white, 40%),
+    background-30: color.mix(#060307, white, 30%),
+    background-20: color.mix(#060307, white, 20%),
+    background-10: color.mix(#060307, white, 10%),
+    background-5: color.mix(#060307, white, 5%),
+  ),
+);
+
+// Function to get a value from the theme map
+@function theme($theme-name, $key) {
+  @return map-get(map-get($themes, $theme-name), $key);
+}
+
+// Apply theme variables
+:root {
+  --text-color: #{theme(light, text)};
+  --background-color: #{theme(light, background)};
+  --primary-color: #{theme(light, primary)};
+  --secondary-color: #{theme(light, secondary)};
+  --accent-color: #{theme(light, accent)};
+
+  --text-95: #{theme(light, text-95)};
+  --text-90: #{theme(light, text-90)};
+  --text-80: #{theme(light, text-80)};
+  --text-70: #{theme(light, text-70)};
+  --text-60: #{theme(light, text-60)};
+  --text-50: #{theme(light, text-50)};
+  --text-40: #{theme(light, text-40)};
+  --text-30: #{theme(light, text-30)};
+  --text-20: #{theme(light, text-20)};
+  --text-10: #{theme(light, text-10)};
+  --text-5: #{theme(light, text-5)};
+
+  --background-95: #{theme(light, background-95)};
+  --background-90: #{theme(light, background-90)};
+  --background-80: #{theme(light, background-80)};
+  --background-70: #{theme(light, background-70)};
+  --background-60: #{theme(light, background-60)};
+  --background-50: #{theme(light, background-50)};
+  --background-40: #{theme(light, background-40)};
+  --background-30: #{theme(light, background-30)};
+  --background-20: #{theme(light, background-20)};
+  --background-10: #{theme(light, background-10)};
+  --background-5: #{theme(light, background-5)};
+}
+
+[data-theme="dark"] {
+  --text-color: #{theme(dark, text)};
+  --background-color: #{theme(dark, background)};
+  --primary-color: #{theme(dark, primary)};
+  --secondary-color: #{theme(dark, secondary)};
+  --accent-color: #{theme(dark, accent)};
+
+  --text-95: #{theme(dark, text-95)};
+  --text-90: #{theme(dark, text-90)};
+  --text-80: #{theme(dark, text-80)};
+  --text-70: #{theme(dark, text-70)};
+  --text-60: #{theme(dark, text-60)};
+  --text-50: #{theme(dark, text-50)};
+  --text-40: #{theme(dark, text-40)};
+  --text-30: #{theme(dark, text-30)};
+  --text-20: #{theme(dark, text-20)};
+  --text-10: #{theme(dark, text-10)};
+  --text-5: #{theme(dark, text-5)};
+
+  --background-95: #{theme(dark, background-95)};
+  --background-90: #{theme(dark, background-90)};
+  --background-80: #{theme(dark, background-80)};
+  --background-70: #{theme(dark, background-70)};
+  --background-60: #{theme(dark, background-60)};
+  --background-50: #{theme(dark, background-50)};
+  --background-40: #{theme(dark, background-40)};
+  --background-30: #{theme(dark, background-30)};
+  --background-20: #{theme(dark, background-20)};
+  --background-10: #{theme(dark, background-10)};
+  --background-5: #{theme(dark, background-5)};
+}

@@ -1,0 +1,99 @@
+:root {
+  --text-color: #08050a;
+  --background-color: #fbf8fc;
+  --primary-color: #8951bd;
+  --secondary-color: #bb98dc;
+  --accent-color: #9d67d0;
+  --text-95: rgb(20.35, 17.5, 22.25);
+  --text-90: rgb(32.7, 30, 34.5);
+  --text-80: rgb(57.4, 55, 59);
+  --text-70: rgb(82.1, 80, 83.5);
+  --text-60: rgb(106.8, 105, 108);
+  --text-50: rgb(131.5, 130, 132.5);
+  --text-40: rgb(156.2, 155, 157);
+  --text-30: rgb(180.9, 180, 181.5);
+  --text-20: rgb(205.6, 205, 206);
+  --text-10: rgb(230.3, 230, 230.5);
+  --text-5: rgb(242.65, 242.5, 242.75);
+  --background-95: rgb(238.45, 235.6, 239.4);
+  --background-90: rgb(225.9, 223.2, 226.8);
+  --background-80: rgb(200.8, 198.4, 201.6);
+  --background-70: rgb(175.7, 173.6, 176.4);
+  --background-60: rgb(150.6, 148.8, 151.2);
+  --background-50: rgb(125.5, 124, 126);
+  --background-40: rgb(100.4, 99.2, 100.8);
+  --background-30: rgb(75.3, 74.4, 75.6);
+  --background-20: rgb(50.2, 49.6, 50.4);
+  --background-10: rgb(25.1, 24.8, 25.2);
+  --background-5: rgb(12.55, 12.4, 12.6);
+}
+
+[data-theme=dark] {
+  --text-color: #f7f4fa;
+  --background-color: #060307;
+  --primary-color: #7a42ae;
+  --secondary-color: #462367;
+  --accent-color: #652f98;
+  --text-95: rgb(234.65, 231.8, 237.5);
+  --text-90: rgb(222.3, 219.6, 225);
+  --text-80: rgb(197.6, 195.2, 200);
+  --text-70: rgb(172.9, 170.8, 175);
+  --text-60: rgb(148.2, 146.4, 150);
+  --text-50: rgb(123.5, 122, 125);
+  --text-40: rgb(98.8, 97.6, 100);
+  --text-30: rgb(74.1, 73.2, 75);
+  --text-20: rgb(49.4, 48.8, 50);
+  --text-10: rgb(24.7, 24.4, 25);
+  --text-5: rgb(12.35, 12.2, 12.5);
+  --background-95: rgb(18.45, 15.6, 19.4);
+  --background-90: rgb(30.9, 28.2, 31.8);
+  --background-80: rgb(55.8, 53.4, 56.6);
+  --background-70: rgb(80.7, 78.6, 81.4);
+  --background-60: rgb(105.6, 103.8, 106.2);
+  --background-50: rgb(130.5, 129, 131);
+  --background-40: rgb(155.4, 154.2, 155.8);
+  --background-30: rgb(180.3, 179.4, 180.6);
+  --background-20: rgb(205.2, 204.6, 205.4);
+  --background-10: rgb(230.1, 229.8, 230.2);
+  --background-5: rgb(242.55, 242.4, 242.6);
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: inherit;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+button,
+input {
+  font-family: inherit;
+  font-size: inherit;
+  background: none;
+  cursor: pointer;
+}
+
+body {
+  background-color: var(--background-color);
+  color: var(--text-color);
+  font-weight: 500;
+  transition: background-color 0.7s cubic-bezier(0.3, 0, 0, 1), color 0.7s cubic-bezier(0.3, 0, 0, 1);
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  padding-top: 12rem;
+  max-width: 192rem;
+}
+
+.main-content {
+  flex-grow: 1;
+}

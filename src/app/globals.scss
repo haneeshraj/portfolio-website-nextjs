@@ -1,0 +1,43 @@
+@import "../themes/themes";
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: inherit;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+button,
+input {
+  font-family: inherit;
+  font-size: inherit;
+  background: none;
+  cursor: pointer;
+}
+
+body {
+  background-color: var(--background-color);
+  color: var(--text-color);
+  font-weight: 500;
+  transition: background-color 0.7s cubic-bezier(0.3, 0, 0, 1),
+    color 0.7s cubic-bezier(0.3, 0, 0, 1);
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  padding-top: 12rem;
+
+  max-width: 192rem;
+}
+
+.main-content {
+  flex-grow: 1;
+}
